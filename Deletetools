@@ -1,0 +1,18 @@
+local Players = game:GetService("Players")
+local localPlayer = Players.LocalPlayer
+local backpack = localPlayer:WaitForChild("Backpack")
+local tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.CanBeDropped = false
+tool.Parent = backpack
+tool.Name = "Delete"
+tool.Equipped:Connect(function(mouse)
+mouse.Button1Down:Connect(function()
+if mouse.Target and mouse.Target.Parent then
+mouse.Target.Transparency = 1
+mouse.Target.CanCollide = false
+mouse.Target.Anchored = false
+mouse.Target.Size  = Vector3.new(0,0,0)
+end
+end)
+end)
